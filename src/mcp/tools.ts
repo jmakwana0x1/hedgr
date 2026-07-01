@@ -164,6 +164,13 @@ export function createHedgrServer(
           executor,
           feeModel,
         );
+        // Capture the payment only after a fresh execution succeeds; a
+        // replayed key did no new work, so nothing new is charged.
+        let settlement: string | undefined;
+        if (!result.replayed && paymentProof && gate.settle) {
+          const settled = await gate.settle(paymentProof, "place_hedge");
+          settlement = settled.ok ? "settled" : `settlement failed: ${settled.error}`;
+        }
         return json({
           replayed: result.replayed,
           position: result.position,
@@ -171,6 +178,7 @@ export function createHedgrServer(
           maxLossUsd: result.opportunity.maxLossUsd,
           feesUsd: result.opportunity.feesUsd,
           scenarios: result.opportunity.scenarios,
+          ...(settlement ? { settlement } : {}),
         });
       } catch (err) {
         return errorResult(err);

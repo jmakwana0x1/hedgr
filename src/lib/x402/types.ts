@@ -25,6 +25,8 @@ export interface PaymentGate {
   accepts(resource: string): PaymentRequirement[];
   /** Verify a payment proof for a resource. */
   verify(proof: string | undefined, resource: string): Promise<VerifyResult>;
+  /** Capture the payment once the gated work has succeeded. */
+  settle?(proof: string, resource: string): Promise<VerifyResult>;
 }
 
 /** No-op gate: execution is free. Used in paper mode and tests. */
