@@ -70,6 +70,14 @@ export class MemoryStore implements Store {
     return { position, created: true };
   }
 
+  async updatePosition(position: Position): Promise<Position> {
+    if (!this.positions.has(position.id)) {
+      throw new Error(`updatePosition: unknown position ${position.id}`);
+    }
+    this.positions.set(position.id, position);
+    return position;
+  }
+
   async getPosition(id: string): Promise<Position | null> {
     return this.positions.get(id) ?? null;
   }

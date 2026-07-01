@@ -37,6 +37,7 @@ export interface PositionStore {
    * Must be safe to replay: a duplicate key returns the original position.
    */
   insertPositionIfAbsent(position: Position): Promise<PositionInsertResult>;
+  updatePosition(position: Position): Promise<Position>;
   getPosition(id: string): Promise<Position | null>;
   getPositionByIdempotencyKey(key: string): Promise<Position | null>;
   listPositions(): Promise<Position[]>;

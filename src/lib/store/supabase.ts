@@ -205,6 +205,15 @@ export class SupabaseStore implements Store {
     return { position, created: true };
   }
 
+  async updatePosition(position: Position): Promise<Position> {
+    const { error } = await this.client
+      .from("positions")
+      .update(positionToRow(position))
+      .eq("id", position.id);
+    if (error) throw new Error(`updatePosition failed: ${error.message}`);
+    return position;
+  }
+
   async getPosition(id: string): Promise<Position | null> {
     const { data, error } = await this.client
       .from("positions").select("*").eq("id", id).maybeSingle();
