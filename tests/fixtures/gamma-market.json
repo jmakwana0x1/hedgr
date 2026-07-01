@@ -1,0 +1,12 @@
+{
+  "id": "253591",
+  "question": "Will ETH close above $4,000 on December 31?",
+  "description": "This market will resolve to \"Yes\" if the Coinbase 1 minute candle for ETH-USD closes at or above $4,000.00 on December 31, 23:59 ET. Otherwise, this market will resolve to \"No\".",
+  "outcomes": "[\"Yes\", \"No\"]",
+  "outcomePrices": "[\"0.62\", \"0.38\"]",
+  "clobTokenIds": "[\"71321045679252212594626385532706912750332728571942532289631379312455583992563\", \"52114319501245915516055106046884209969926127482827954674443846427813813222426\"]",
+  "endDate": "2026-12-31T23:59:00Z",
+  "liquidityNum": 152340.55,
+  "active": true,
+  "closed": false
+}
