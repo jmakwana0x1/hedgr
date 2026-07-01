@@ -1,0 +1,35 @@
+{
+  "name": "hedgr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP server where AI agents discover and execute cross-venue hedges across Polymarket and Uniswap, settled through x402 micropayments.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "mcp": "tsx src/mcp/server.ts",
+    "ingest": "tsx src/scripts/ingest.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "next": "^15.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "viem": "^2.30.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.1.0"
+  }
+}
